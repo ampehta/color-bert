@@ -40,6 +40,7 @@ def main(args):
         # continued pre-training on mlm
         for data, labels in mlm_dataloader:
             train(model, tokenizer, data, labels)
+    model.save_pretrained(args.save_path)
 
 
 if __name__ == "__main__":
@@ -49,5 +50,6 @@ if __name__ == "__main__":
         "model_name", type=str, help="name of pretrained language model"
     )
     parser.add_argument("num_epochs", type=int, help="number of training epochs")
+    parser.add_argument("save_path", type=str, help="model save path")
     args = parser.parse_args()
     main(args)
