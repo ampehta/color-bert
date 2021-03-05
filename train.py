@@ -28,7 +28,7 @@ def main(args):
     model_name = args.model_name
     batch_size = args.batch_size
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    tokenizer = AutoTokenizer.from_pretrained(model_name).to(device)
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForMaskedLM.from_pretrained(model_name).to(device)
     optimizer = AdamW(model.parameters())
     mlm_dataloader = make_dataloader(os.path.join("data", "masked.txt"), batch_size)
