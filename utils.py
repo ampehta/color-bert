@@ -12,3 +12,11 @@ def set_seed(seed=42):
     torch.manual_seed(seed)
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = True
+
+
+def mask(sentence):
+    words = sentence.split()
+    mask_idx = random.choice(range(len(words)))
+    words[mask_idx] = "[MASK]"
+    masked_sentence = " ".join(words)
+    return masked_sentence

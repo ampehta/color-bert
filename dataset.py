@@ -1,6 +1,7 @@
 import os
 
 from torch.utils.data import DataLoader, Dataset
+from utils import mask
 
 
 class ColorBertDataset(Dataset):
